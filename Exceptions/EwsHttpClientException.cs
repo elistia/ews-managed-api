@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Microsoft.Exchange.WebServices.Data
 {
-    class EwsHttpClientException: Exception
+    public class EwsHttpClientException: Exception
     {
         public EwsHttpClientException(Exception e) : base(e.Message)
         {
 
         }
 
-        public EwsHttpClientException(HttpResponseMessage response): base(response.ReasonPhrase)
+        public EwsHttpClientException(HttpResponseMessage response): base(response.StatusCode.ToString())
         {
             IsProtocolError = true;
             Response = response;
